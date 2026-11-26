@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111d">
+  <meta name="description" content="CYBER//SHIFT — a browser-based cybersecurity defense game.">
+  <title>CYBER//SHIFT | SOC Simulator</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Cyber Shift home"><span class="brand-mark">C</span><span>CYBER<span class="accent">//</span>SHIFT</span></a>
+    <div class="top-status"><span class="live-dot"></span> SIMULATION ONLINE <span class="top-divider">/</span> <span id="clock">00:00:00</span></div>
+    <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">▤ SCANLINES: ON</button>
+  </header>
+
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="operator-card">
+        <div class="avatar">⌘</div>
+        <div><small>OPERATOR</small><strong>ROOKIE_01</strong><span class="rank">TRAINEE ANALYST</span></div>
+      </div>
+      <div class="side-label">COMMAND MENU</div>
+      <button class="nav-item active" data-view="dashboard"><span>▦</span> Command Center</button>
+      <button class="nav-item" data-view="missions"><span>◈</span> Mission Board <b class="nav-count">3</b></button>
+      <button class="nav-item" data-view="intel"><span>⌁</span> Threat Intel</button>
+      <button class="nav-item" data-view="briefing"><span>▤</span> Field Guide</button>
+      <div class="sidebar-bottom">
+        <div class="connection"><span class="live-dot"></span><div><b>SECURE LINK</b><small>LOCAL GAME SESSION</small></div></div>
+        <small class="version">BUILD 1.0.0 · OFFLINE</small>
+      </div>
+    </aside>
+
+    <section class="main-content">
+      <div class="welcome-row">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> SECURITY OPERATIONS CENTER / 07</div>
+          <h1 id="pageTitle">Command <span class="gradient-text">Center</span></h1>
+          <p class="subtitle" id="pageSubtitle">Monitor the network. Investigate anomalies. Keep the city online.</p>
+        </div>
+        <div class="date-chip"><span>◷</span><div><small>YOUR SHIFT</small><b>DAY 01 / 07</b></div></div>
+      </div>
+
+      <div class="view active" id="dashboardView">
+        <div class="hero-panel">
+          <div class="hero-copy">
+            <div class="pill"><span class="live-dot"></span> TRAINING SCENARIO · ACTIVE</div>
+            <h2>THE CITY IS<br><span class="gradient-text">UNDER WATCH.</span></h2>
+            <p>A suspicious signal just appeared in the city network. Your job: read the evidence, make the call, and protect the digital district.</p>
+            <button class="primary-btn" id="startMission">▶ &nbsp; START FIRST MISSION <span>↗</span></button>
+          </div>
+          <div class="hero-visual" aria-label="Decorative cyber security radar">
+            <div class="radar-grid"></div><div class="radar-sweep"></div>
+            <div class="radar-ring ring-a"></div><div class="radar-ring ring-b"></div><div class="radar-ring ring-c"></div>
+            <i class="blip blip-a"></i><i class="blip blip-b"></i><i class="blip blip-c"></i>
+            <div class="radar-center">⌁</div><span class="radar-label label-a">NODE_04</span><span class="radar-label label-b">UNKNOWN</span><span class="radar-coord">40.7128° N / 74.0060° W</span>
+          </div>
+          <div class="hero-bottom"><span>THREAT LEVEL <b class="text-amber">ELEVATED</b></span><span>NETWORK INTEGRITY <b class="text-green">98.4%</b></span><span>LAST PING <b>JUST NOW</b></span></div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>DEFENSE SCORE</span><span class="stat-icon cyan">✳</span></div><strong id="scoreStat">000</strong><small><span class="text-green">▲ READY</span> &nbsp; Earn points by completing missions</small><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="stat-card"><div class="stat-top"><span>THREATS RESOLVED</span><span class="stat-icon purple">⌁</span></div><strong id="resolvedStat">00</strong><small>Training incidents successfully handled</small><div class="progress-track"><i id="resolvedBar"></i></div></article>
+          <article class="stat-card"><div class="stat-top"><span>NETWORK HEALTH</span><span class="stat-icon green">⌬</span></div><strong id="healthStat">98.4<span class="unit">%</span></strong><small><span class="text-green">● STABLE</span> &nbsp; Simulated environment</small><div class="health-wave"><svg viewBox="0 0 240 34" preserveAspectRatio="none"><polyline points="0,23 16,23 26,8 37,29 52,18 67,18 79,5 92,26 108,18 125,18 139,11 152,24 169,17 185,17 198,7 213,24 228,15 240,15"/></svg></div></article>
+        </div>
+
+        <div class="lower-grid">
+          <section class="panel activity-panel"><div class="panel-heading"><div><span class="eyebrow">LIVE FEED</span><h3>Network activity</h3></div><span class="live-tag"><i></i> LIVE SIM</span></div><div class="activity-list" id="activityList"><div class="activity-item"><span class="activity-dot green"></span><div><b>Firewall rules synced</b><small>Gateway-01 · Policy check passed</small></div><time>NOW</time></div><div class="activity-item"><span class="activity-dot amber"></span><div><b>Unusual login pattern detected</b><small>Auth server · Review recommended</small></div><time>1M</time></div><div class="activity-item"><span class="activity-dot cyan"></span><div><b>Backup integrity verified</b><small>Storage cluster · All clear</small></div><time>3M</time></div></div></section>
+          <section class="panel mission-panel"><div class="panel-heading"><div><span class="eyebrow">UP NEXT</span><h3>Priority mission</h3></div><span class="mission-number">01 / 03</span></div><div class="mission-card"><div class="mission-symbol">⌖</div><div><span class="difficulty">● BEGINNER</span><h4>Phishing or Friendly?</h4><p>Inspect a suspicious message and identify the warning signs.</p></div></div><button class="text-btn" id="openMissions">VIEW ALL MISSIONS <span>→</span></button></section>
+        </div>
+      </div>
+
+      <div class="view" id="missionsView">
+        <div class="section-intro"><span class="eyebrow">TRAINING SIMULATIONS</span><h2>Mission <span class="gradient-text">Board</span></h2><p>Every mission is a fictional, safe, defensive cybersecurity challenge.</p></div>
+        <div class="mission-grid">
+          <article class="mission-tile"><div class="tile-top"><span class="tile-icon">✉</span><span class="difficulty">● BEGINNER</span></div><h3>Phishing or Friendly?</h3><p>Read a fictional email and spot the suspicious clues before anyone clicks.</p><div class="tile-meta"><span>⏱ 2–4 MIN</span><span>+100 XP</span></div><button class="primary-btn full" data-mission="phishing">PLAY MISSION <span>↗</span></button></article>
+          <article class="mission-tile"><div class="tile-top"><span class="tile-icon purple-bg">⌁</span><span class="difficulty medium">● INTERMEDIATE</span></div><h3>Alert Triage</h3><p>Sort a set of fictional security alerts into urgent and routine events.</p><div class="tile-meta"><span>⏱ 3–5 MIN</span><span>+150 XP</span></div><button class="primary-btn full" data-mission="triage">PLAY MISSION <span>↗</span></button></article>
+          <article class="mission-tile"><div class="tile-top"><span class="tile-icon green-bg">▣</span><span class="difficulty">● BEGINNER</span></div><h3>Password Fortress</h3><p>Choose the strongest passphrase habits for a fictional team account.</p><div class="tile-meta"><span>⏱ 2–3 MIN</span><span>+100 XP</span></div><button class="primary-btn full" data-mission="password">PLAY MISSION <span>↗</span></button></article>
+        </div>
+      </div>
+
+      <div class="view" id="intelView">
+        <div class="section-intro"><span class="eyebrow">ANALYST DATABASE</span><h2>Threat <span class="gradient-text">Intel</span></h2><p>Learn the signals defenders look for. These are educational examples, not live threat feeds.</p></div>
+        <div class="intel-list">
+          <article class="intel-card"><span class="intel-icon amber">✉</span><div><h3>Phishing</h3><p>Messages that impersonate trusted people or services to trick someone into sharing information or opening unsafe content.</p><small>DEFENSE: Verify the sender through a separate trusted channel. Report suspicious messages.</small></div><span class="severity medium">COMMON</span></article>
+          <article class="intel-card"><span class="intel-icon purple">⌁</span><div><h3>Unusual login activity</h3><p>Sign-in attempts that do not fit a user's normal pattern, such as unexpected locations or repeated failures.</p><small>DEFENSE: Use multi-factor authentication and review sign-in alerts.</small></div><span class="severity high">REVIEW</span></article>
+          <article class="intel-card"><span class="intel-icon cyan">▤</span><div><h3>Data exposure</h3><p>Information becoming accessible to people or systems that should not have access to it.</p><small>DEFENSE: Apply least privilege, encryption, and careful access reviews.</small></div><span class="severity high">REVIEW</span></article>
+          <article class="intel-card"><span class="intel-icon green">◈</span><div><h3>Unpatched software</h3><p>Known weaknesses can remain present when software updates are delayed.</p><small>DEFENSE: Keep systems updated and maintain an approved patch schedule.</small></div><span class="severity low">PREVENTABLE</span></article>
+        </div>
+      </div>
+
+      <div class="view" id="briefingView">
+        <div class="section-intro"><span class="eyebrow">OPERATOR HANDBOOK</span><h2>Field <span class="gradient-text">Guide</span></h2><p>Quick principles for making calm, evidence-based defensive decisions.</p></div>
+        <div class="guide-grid">
+          <article class="guide-card"><span>01</span><h3>Pause before you click</h3><p>Unexpected urgency is a common warning sign. Verify unusual requests independently.</p></article>
+          <article class="guide-card"><span>02</span><h3>Use layered security</h3><p>Strong unique passwords, a password manager, and multi-factor authentication work together.</p></article>
+          <article class="guide-card"><span>03</span><h3>Keep evidence</h3><p>Record what happened, when it happened, and which system raised the alert.</p></article>
+          <article class="guide-card"><span>04</span><h3>Escalate responsibly</h3><p>Follow your organization's incident process. Do not investigate systems without permission.</p></article>
+        </div>
+        <div class="disclaimer"><b>⚑ SIMULATION DISCLAIMER</b><p>CYBER//SHIFT is an educational game. All alerts, events, names, and systems are fictional and run locally in your browser. It does not scan networks, access accounts, send data, or perform real security testing.</p></div>
+      </div>
+      <footer class="footer"><span>CYBER//SHIFT <span class="accent">●</span> DEFEND THE DIGITAL DISTRICT</span><span>MADE FOR LEARNING · RUNS LOCALLY</span></footer>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="gameModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="game-modal">
+      <button class="modal-close" id="closeModal" aria-label="Close mission">×</button>
+      <div class="modal-kicker"><span class="live-dot"></span> MISSION SIMULATOR / <span id="missionCode">01-A</span></div>
+      <div class="modal-progress"><i id="modalProgress"></i></div>
+      <div id="missionContent"></div>
+      <div class="modal-feedback" id="feedback" aria-live="polite"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="game.js"></script>
+</body>
+</html>
